@@ -4,7 +4,9 @@ mkdir -p ../build/isofiles/boot/grub
 
 nasm -f elf32 ../boot/boot.asm -o ../build/boot.o
 
-ld -m elf_i386 -T ../boot/linker.ld ../build/boot.o -o ../build/jos.bin
+gcc -m32 -ffreestanding -c ../kernel/kernel.c -o ../build/kernel.o
+
+ld -m elf_i386 -T ../boot/linker.ld ../build/boot.o ../build/kernel.o -o ../build/jos.bin
 
 cp ../build/jos.bin ../build/isofiles/boot/
 
