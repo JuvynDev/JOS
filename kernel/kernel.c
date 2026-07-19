@@ -1,7 +1,8 @@
-void screen_write(char* message);
+#include "../drivers/screen.h"
 
 void kernel_main() {
-    screen_write("JOS kernel loaded!");
-    
+    screen_clear();
+    screen_write("Welcome to JOS!");
+
     while (1) {}
 }
